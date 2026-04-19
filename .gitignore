@@ -14,3 +14,6 @@ build
 Makefile
 compile_parser.sh
 Cargo.lock
+
+# Local config
+**/settings.local.json
