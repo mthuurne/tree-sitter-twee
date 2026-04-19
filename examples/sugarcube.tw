@@ -1,0 +1,41 @@
+:: Start [welcome] {"position": "400,300"}
+Welcome, <<= $name>>!
+
+<<set $hp to 10>>
+<<set _turn to 0>>
+
+<<if $hp gt 5>>
+You feel strong.
+<<elseif $hp is 0>>
+You are dead.
+<<else>>
+You are wounded.
+<</if>>
+
+<!-- a short intro -->
+<div class="room">
+  You are in a damp stone chamber. Visible exits: north, east.
+</div>
+
+/* author's note: tune $hp balance later */
+/% tiddly-style comment %/
+
+Template reference: <<= ?SettingsTemplate>>
+
+[[Go north->North Room]]
+[[Back<-Intro]]
+[[Look around|Start]]
+[img[sprite.png]]
+
+:: North Room [dark]
+<<widget "greet">><<print "hello, " + $name>><</widget>>
+
+A cold hallway. Check: <<if $hp gte 1 and $hp lte 10>>ok<</if>>.
+
+:: StoryData
+{
+  "ifid": "PLACEHOLDER",
+  "format": "SugarCube",
+  "format-version": "2.36.1",
+  "start": "Start"
+}

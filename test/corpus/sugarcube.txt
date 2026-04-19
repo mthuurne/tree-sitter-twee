@@ -1,0 +1,152 @@
+==================
+macro with variable and keyword operator
+==================
+:: P
+<<set $x to 1>>
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (macro (macro_name) (macro_body (variable) (keyword_op))))))
+
+==================
+shortcut print macro
+==================
+:: P
+<<= $name>>
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (macro (macro_name) (macro_body (variable))))))
+
+==================
+closing macro
+==================
+:: P
+<</if>>
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (macro (macro_name)))))
+
+==================
+variables by sigil
+==================
+:: P
+text $s and _t and ?Tpl end
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (plain_text)
+      (variable)
+      (plain_text)
+      (variable)
+      (plain_text)
+      (variable)
+      (plain_text))))
+
+==================
+c-style comment
+==================
+:: P
+/* js */
+---
+(story
+  (passage
+    (heading (name))
+    (prose (comment))))
+
+==================
+tiddly-style comment
+==================
+:: P
+/% tiddly %/
+---
+(story
+  (passage
+    (heading (name))
+    (prose (comment))))
+
+==================
+html-style comment
+==================
+:: P
+<!-- html -->
+---
+(story
+  (passage
+    (heading (name))
+    (prose (comment))))
+
+==================
+html tag with attributes and close
+==================
+:: P
+<div class="r">x</div>
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (html_tag (tag_name) (attributes))
+      (plain_text)
+      (html_tag (tag_name)))))
+
+==================
+link with reverse separator
+==================
+:: P
+[[Back<-Start]]
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (link (label) (separator) (dest)))))
+
+==================
+image link
+==================
+:: P
+[img[a.png]]
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (image_link (dest)))))
+
+==================
+lone less-than in prose is plain text
+==================
+:: P
+x < y
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (plain_text)
+      (plain_text)
+      (plain_text))))
+
+==================
+bare sigil character in prose is plain text
+==================
+:: P
+bare $ sign
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (plain_text)
+      (plain_text)
+      (plain_text))))
