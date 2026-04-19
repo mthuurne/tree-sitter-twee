@@ -1,0 +1,25 @@
+[package]
+name = "tree-sitter-twee"
+description = "Twee grammar for tree-sitter"
+version = "0.1.0"
+authors = ["novov"]
+license = "MIT"
+edition = "2021"
+autoexamples = false
+
+build = "bindings/rust/build.rs"
+include = [
+  "bindings/rust/*",
+  "grammar.js",
+  "queries/**/*",
+  "src/*",
+]
+
+[lib]
+path = "bindings/rust/lib.rs"
+
+[dependencies]
+tree-sitter = "~0.20"
+
+[build-dependencies]
+cc = "1.0"

@@ -14,4 +14,3 @@ build
 Makefile
 compile_parser.sh
 Cargo.lock
-Cargo.toml
