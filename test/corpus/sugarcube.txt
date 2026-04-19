@@ -8,7 +8,7 @@ macro with variable and keyword operator
   (passage
     (heading (name))
     (prose
-      (macro (macro_name) (macro_body (variable) (keyword_op))))))
+      (macro (macro_name) (macro_body (variable) (keyword_op) (number))))))
 
 ==================
 shortcut print macro

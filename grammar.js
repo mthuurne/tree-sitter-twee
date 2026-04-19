@@ -110,12 +110,12 @@ module.exports = grammar({
 
     keyword_op: $ => token(prec(1, /to|is|and|or|not|eq|ne|lt|gt|lte|gte/)),
 
-    number: $ => /-?\d+(\.\d+)?/,
+    number: $ => token(prec(1, /-?\d+(\.\d+)?/)),
 
     comment: $ => token(choice(
-      seq("/*", /[\s\S]*?\*\//),
-      seq("/%", /[\s\S]*?%\//),
-      seq("<!--", /[\s\S]*?-->/)
+      /\/\*([^*]|\*[^/])*\*\//,
+      /\/%([^%]|%[^/])*%\//,
+      /<!--([^-]|-[^-]|--[^>])*-->/
     )),
 
     html_tag: $ => seq(

@@ -401,8 +401,15 @@
       }
     },
     "number": {
-      "type": "PATTERN",
-      "value": "-?\\d+(\\.\\d+)?"
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "-?\\d+(\\.\\d+)?"
+        }
+      }
     },
     "comment": {
       "type": "TOKEN",
@@ -410,43 +417,16 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "/*"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[\\s\\S]*?\\*\\/"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "\\/\\*([^*]|\\*[^/])*\\*\\/"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "/%"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[\\s\\S]*?%\\/"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "\\/%([^%]|%[^/])*%\\/"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "<!--"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[\\s\\S]*?-->"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "<!--([^-]|-[^-]|--[^>])*-->"
           }
         ]
       }
