@@ -1,0 +1,29 @@
+{
+  "grammars": [
+    {
+      "name": "twee",
+      "camelcase": "Twee",
+      "scope": "source.twee",
+      "path": ".",
+      "file-types": ["tw", "twee"],
+      "highlights": ["queries/twee/highlights.scm"]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Twee grammar for tree-sitter",
+    "authors": [
+      { "name": "novov" }
+    ]
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
+  }
+}
