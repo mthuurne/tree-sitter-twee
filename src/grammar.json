@@ -346,6 +346,10 @@
             "name": "number"
           },
           {
+            "type": "SYMBOL",
+            "name": "_macro_word"
+          },
+          {
             "type": "PATTERN",
             "value": "[^>\"'$_?\\s]+"
           },
@@ -396,7 +400,18 @@
         "value": 1,
         "content": {
           "type": "PATTERN",
-          "value": "to|is|and|or|not|eq|ne|lt|gt|lte|gte"
+          "value": "to|is|and|or|not|eq|ne|lte|gte|lt|gt"
+        }
+      }
+    },
+    "_macro_word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[a-zA-Z_][a-zA-Z0-9_]*"
         }
       }
     },

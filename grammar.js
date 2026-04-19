@@ -93,6 +93,7 @@ module.exports = grammar({
       $.string,
       $.keyword_op,
       $.number,
+      $._macro_word,
       /[^>"'$_?\s]+/,
       /\s+/,
       ">"
@@ -108,7 +109,9 @@ module.exports = grammar({
       /'[^'\\]*(\\.[^'\\]*)*'/
     ),
 
-    keyword_op: $ => token(prec(1, /to|is|and|or|not|eq|ne|lt|gt|lte|gte/)),
+    keyword_op: $ => token(prec(1, /to|is|and|or|not|eq|ne|lte|gte|lt|gt/)),
+
+    _macro_word: $ => token(prec(1, /[a-zA-Z_][a-zA-Z0-9_]*/)),
 
     number: $ => token(prec(1, /-?\d+(\.\d+)?/)),
 
