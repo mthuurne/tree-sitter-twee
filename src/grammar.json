@@ -351,7 +351,7 @@
           },
           {
             "type": "PATTERN",
-            "value": "[^>\"'$_?\\s]+"
+            "value": "[^>\"'`$_?\\s]+"
           },
           {
             "type": "PATTERN",
@@ -360,6 +360,10 @@
           {
             "type": "STRING",
             "value": ">"
+          },
+          {
+            "type": "STRING",
+            "value": "?"
           }
         ]
       }
@@ -390,6 +394,10 @@
         {
           "type": "PATTERN",
           "value": "'[^'\\\\]*(\\\\.[^'\\\\]*)*'"
+        },
+        {
+          "type": "PATTERN",
+          "value": "`[^`]*`"
         }
       ]
     },
