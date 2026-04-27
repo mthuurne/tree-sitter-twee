@@ -30,7 +30,7 @@
 
 ; HTML — tag_name includes the leading "<" or "</"
 (tag_name) @tag
-(html_tag ">" @tag.delimiter)
+(html_tag ">" @tag)
 (attributes)  @attribute
 
 ; Comments
