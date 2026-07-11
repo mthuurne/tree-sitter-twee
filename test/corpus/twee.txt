@@ -1,0 +1,15 @@
+==================
+empty passage
+==================
+:: P1
+
+:: P2
+Hello!
+---
+(story
+  (passage
+    (heading (name)))
+  (passage
+    (heading (name))
+    (prose
+      (plain_text))))
