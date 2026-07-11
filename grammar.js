@@ -6,7 +6,7 @@ module.exports = grammar({
 
     passage: $ => seq(
       $.heading,
-      $._body
+      optional($._body)
     ),
 
     _body: $ => choice(
