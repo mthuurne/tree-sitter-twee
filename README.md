@@ -11,3 +11,12 @@ A [tree-sitter](https://tree-sitter.github.io/tree-sitter/) grammar for the [Twe
 - Comments: `/* */`, `/% %/`, `<!-- -->`
 - Inline HTML tags
 - Strings, numbers, and word-operators (`to`, `is`, `eq`, `gt`, …) tokenized inside macro bodies
+
+
+## Modifying the grammar
+
+Install the tree-sitter CLI tool. Binaries available on their [GitHub releases page](https://github.com/tree-sitter/tree-sitter/releases/), but there are [other installation options](https://tree-sitter.github.io/tree-sitter/creating-parsers/1-getting-started.html#installation) as well.
+
+Generate `src/grammar.json` using `tree-sitter generate`.
+
+Unit tests are under `test/corpus/`. Run them using `tree-sitter test`.
