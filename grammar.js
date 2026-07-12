@@ -1,8 +1,16 @@
 module.exports = grammar({
   name: "twee",
 
+  extras: $ => [/[ \t]/],
+
   rules: {
-    story: $ => repeat($.passage),
+    story: $ => seq(
+      repeat("\n"),
+      repeat(seq(
+        $.passage,
+        repeat("\n")
+      ))
+    ),
 
     passage: $ => seq(
       $.heading,
@@ -15,7 +23,8 @@ module.exports = grammar({
     ),
 
     prose: $ => prec.right(seq(
-      repeat1($._prose_part)
+      repeat1($._prose_part),
+      repeat(seq("\n", repeat($._prose_part)))
     )),
 
     _prose_part: $ => choice(
@@ -59,7 +68,7 @@ module.exports = grammar({
     ),
 
     json: $ => seq(
-      "{",
+      token(seq(repeat("\n"), "{")),
       $._json_part,
       "}"
     ),
@@ -137,7 +146,7 @@ module.exports = grammar({
 
     attributes: $ => /[^>]+/,
 
-    plain_text: $ => token(prec(-1, /[^<$_?\/\[\n]+|[<$_?\/\[\n]/)),
+    plain_text: $ => token(prec(-1, /[^<$_?\/\[\n]+|[<$_?\/\[]/)),
 
     label: $ => $._link_part,
     dest: $ => $._link_part,

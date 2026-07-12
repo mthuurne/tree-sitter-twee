@@ -13,3 +13,51 @@ Hello!
     (heading (name))
     (prose
       (plain_text))))
+==================
+superfluous newlines
+==================
+
+
+:: P1
+Once upon a time...
+
+[[Skip.|P2]]
+
+
+:: P2
+...they lived happily ever after.
+
+
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (plain_text)
+      (link (label) (separator) (dest))))
+  (passage
+    (heading (name))
+    (prose (plain_text))))
+==================
+JSON passage with superfluous newlines
+==================
+:: StoryData
+
+{
+	"ifid": "28580C42-8AC0-4086-AD10-F05631E78D28",
+
+	"tag-colors": {
+		"tag1": "red",
+		"tag2": "green",
+
+		"tag3": "blue",
+	},
+
+	"start": "Start"
+}
+
+---
+(story
+  (passage
+    (heading (name))
+    (json)))
