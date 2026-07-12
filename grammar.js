@@ -38,7 +38,7 @@ module.exports = grammar({
     ),
 
     heading: $ => seq(
-      "::",
+      token.immediate("::"),
       $.name,
       optional($.tags),
       optional($.inline_json),
