@@ -38,8 +38,11 @@ module.exports = grammar({
 
     link: $ => seq(
       "[[",
-      optional(seq($.label, $.separator)),
-      $.dest,
+      choice(
+        $.dest,
+        seq($.label, $.separator, $.dest),
+        seq($.dest, alias($.separator_reverse, $.separator), $.label),
+      ),
       "]]"
     ),
 
@@ -139,7 +142,8 @@ module.exports = grammar({
     label: $ => $._link_part,
     dest: $ => $._link_part,
     _link_part: $ => /[^ \-<|\]]([^\-<|\]]|-[^>]|<[^-])*[^ \-<|\]>]|[^ \-<|\]>]/,
-    separator: $ => /->|<-|\|/,
+    separator: $ => /->|\|/,
+    separator_reverse: $ => "<-",
     name: $ => /[^{\[\n ][^{\[\n]*[^{\[\n ]|[^{\[\n ]/,
     tag: $ => /[a-z0-9]+/
   }

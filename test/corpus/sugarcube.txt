@@ -106,7 +106,7 @@ passage link
 [[Start]]
 [[Back|Start]]
 [[Back->Start]]
-[[Back<-Start]]
+[[Start<-Back]]
 ---
 (story
   (passage
@@ -115,7 +115,7 @@ passage link
       (link (dest))
       (link (label) (separator) (dest))
       (link (label) (separator) (dest))
-      (link (label) (separator) (dest)))))
+      (link (dest) (separator) (label)))))
 
 ==================
 image link
