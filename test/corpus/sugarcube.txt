@@ -100,15 +100,19 @@ html tag with attributes and close
       (html_tag (tag_name)))))
 
 ==================
-link with reverse separator
+passage link
 ==================
 :: P
+[[Back|Start]]
+[[Back->Start]]
 [[Back<-Start]]
 ---
 (story
   (passage
     (heading (name))
     (prose
+      (link (label) (separator) (dest))
+      (link (label) (separator) (dest))
       (link (label) (separator) (dest)))))
 
 ==================
