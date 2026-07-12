@@ -103,6 +103,7 @@ html tag with attributes and close
 passage link
 ==================
 :: P
+[[Start]]
 [[Back|Start]]
 [[Back->Start]]
 [[Back<-Start]]
@@ -111,6 +112,7 @@ passage link
   (passage
     (heading (name))
     (prose
+      (link (dest))
       (link (label) (separator) (dest))
       (link (label) (separator) (dest))
       (link (label) (separator) (dest)))))
