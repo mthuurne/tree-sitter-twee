@@ -14,6 +14,10 @@ build
 Makefile
 compile_parser.sh
 Cargo.lock
+*.o
+*.so
+*.dll
+*.dylib
 
 # Local config
 **/settings.local.json
