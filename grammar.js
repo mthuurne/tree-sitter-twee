@@ -130,11 +130,10 @@ module.exports = grammar({
 
     number: $ => token(prec(1, /-?\d+(\.\d+)?/)),
 
-    comment: $ => token(choice(
-      /\/\*([^*]|\*[^/])*\*\//,
-      /\/%([^%]|%[^/])*%\//,
-      /<!--([^-]|-[^-]|--[^>])*-->/
-    )),
+    comment: $ => choice($.comment_cstyle, $.comment_wiki, $.comment_html),
+    comment_cstyle: $ => seq("/*", token(/([^*]|\*[^/])*/), "*/"),
+    comment_wiki: $ => seq("/%", token(/([^%]|%[^/])*/), "%/"),
+    comment_html: $ => seq("<!--", token(/([^-]|-[^-]|--[^>])*/), "-->"),
 
     html_tag: $ => seq(
       choice("<", "</"),

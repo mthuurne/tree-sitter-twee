@@ -61,7 +61,7 @@ c-style comment
 (story
   (passage
     (heading (name))
-    (prose (comment))))
+    (prose (comment (comment_cstyle)))))
 
 ==================
 tiddly-style comment
@@ -72,7 +72,7 @@ tiddly-style comment
 (story
   (passage
     (heading (name))
-    (prose (comment))))
+    (prose (comment (comment_wiki)))))
 
 ==================
 html-style comment
@@ -83,7 +83,7 @@ html-style comment
 (story
   (passage
     (heading (name))
-    (prose (comment))))
+    (prose (comment (comment_html)))))
 
 ==================
 html tag with attributes and close
