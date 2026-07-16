@@ -137,16 +137,26 @@ module.exports = grammar({
     )),
 
     html_tag: $ => seq(
+      choice("<", "</"),
       $.tag_name,
-      optional($.attributes),
+      repeat($.attribute),
       ">"
     ),
+    tag_name: $ => token.immediate(/[a-zA-Z][a-zA-Z0-9]*/),
+    attribute: $ => seq(
+      $.attribute_name, optional(seq("=", $.attribute_value))
+    ),
+    attribute_name: $ => /[^<>"'/=\s]+/,
+    attribute_value: $ => choice(
+      /[^<>"'=\s]+/,
+      /'[^']*'/,
+      /"[^"]+"/,
+    ),
 
-    tag_name: $ => token(seq("<", optional("/"), /[a-zA-Z][a-zA-Z0-9\-]*/)),
-
-    attributes: $ => /[^>]+/,
-
-    plain_text: $ => token(prec(-1, /[^<$_?\/\[\n]+|[<$_?\/\[]/)),
+    plain_text: $ => choice(
+      token(prec(-1, /[^<$_?\/\[\n]+|[$_?\/\[]/)),
+      /<\s/,
+    ),
 
     label: $ => $._link_part,
     dest: $ => $._link_part,

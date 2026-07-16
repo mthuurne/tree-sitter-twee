@@ -95,7 +95,7 @@ html tag with attributes and close
   (passage
     (heading (name))
     (prose
-      (html_tag (tag_name) (attributes))
+      (html_tag (tag_name) (attribute (attribute_name) (attribute_value)))
       (plain_text)
       (html_tag (tag_name)))))
 
