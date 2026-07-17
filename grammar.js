@@ -30,9 +30,10 @@ module.exports = grammar({
     _prose_part: $ => choice(
       $.comment,
       $.macro,
+      $._style,
       $.image_link,
       $.link,
-      $.variable,
+      alias($.naked_variable, $.variable),
       $.html_tag,
       $.plain_text
     ),
@@ -44,6 +45,21 @@ module.exports = grammar({
       optional($.inline_json),
       "\n"
     ),
+
+    _style: $ => choice(
+      $.emphasis,
+      $.strong,
+      $.underline,
+      $.strikethrough,
+      $.superscript,
+      $.subscript,
+    ),
+    emphasis: $ => prec.left(seq("//", repeat($._prose_part), "//")),
+    strong: $ => prec.left(seq("''", repeat($._prose_part), "''")),
+    underline: $ => prec.left(seq("__", repeat($._prose_part), "__")),
+    strikethrough: $ => prec.left(seq("==", repeat($._prose_part), "==")),
+    superscript: $ => prec.left(seq("^^", repeat($._prose_part), "^^")),
+    subscript: $ => prec.left(seq("~~", repeat($._prose_part), "~~")),
 
     link: $ => seq(
       "[[",
@@ -113,6 +129,15 @@ module.exports = grammar({
       '"'
     )),
 
+    // refuse naked local variables starting with '__' as it is used for underline instead
+    naked_variable: $ => token(seq(
+      choice(
+        /_[A-Za-z$]/,
+        /[$?][A-Za-z$_]/,
+      ),
+      /[A-Za-z0-9$_]*/
+    )),
+
     variable: $ => token(seq(
       /[$_?]/,
       /[A-Za-z_$][A-Za-z0-9_$]*/
@@ -153,7 +178,7 @@ module.exports = grammar({
     ),
 
     plain_text: $ => choice(
-      token(prec(-1, /[^<$_?\/\[\n]+|[$_?\/\[]/)),
+      token(prec(-2, /[^<$_?'=^~\/\[\n]+|[$_?'=^~\/\[]/)),
       /<\s/,
     ),
 

@@ -1,4 +1,28 @@
 ==================
+style markups
+==================
+:: P
+a //Emphasis// b ''Strong'' c __Underline__ d ==Strikethrough== e ^^Superscript^^ f ~~Subscript~~ g
+---
+(story
+  (passage
+    (heading (name))
+    (prose
+      (plain_text)
+      (emphasis (plain_text))
+      (plain_text)
+      (strong (plain_text))
+      (plain_text)
+      (underline (plain_text))
+      (plain_text)
+      (strikethrough (plain_text))
+      (plain_text)
+      (superscript (plain_text))
+      (plain_text)
+      (subscript (plain_text))
+      (plain_text))))
+
+==================
 macro with variable and keyword operator
 ==================
 :: P
